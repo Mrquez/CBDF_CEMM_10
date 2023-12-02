@@ -1,0 +1,36 @@
+<!--empleados.component.html-->
+
+<div class="container">
+  <h1>Listado de empleados - se ve así porque usamos bootstrap</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Sueldo</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Inicia el bucle *ngFor -->
+      <tr *ngFor="let empleado of empleados">
+        <!-- Mueve la etiqueta th dentro del bucle -->
+        <th scope="row">{{empleado.id}}</th>
+        <td>{{empleado.nombre}}</td>
+        <td>{{empleado.sueldo}}</td>
+        <td *ngIf="empleado.estado; else inactivoBlock">activo</td>
+        <ng-template #inactivoBlock>
+          <td>inactivo</td>
+        </ng-template>
+        <td>
+          <button type="button" class="btn btn-primary">Editar</button>&nbsp;
+          <button type="button" class="btn btn-danger">Eliminar</button>&nbsp;
+        </td>
+      </tr>
+      <!-- Cierra el bucle *ngFor -->
+    </tbody>
+  </table>
+</div>
+<p>Claudio Enrique Márquez Moreno</p>
+
